@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Velora Finance</title>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="nav">
+        <div class="heading-box">
+            <h2 class="main-heading Glowing-Velora-Color">Velora Finance </h2>
+            <p class="sub-heading">Take control of your Finances</p>
+        </div>
+
+          <div class="icons-sidebox">
+             <div class="bell-wrapper">
+               <i class="fa-solid fa-bell bell-icon"></i>
+               <span class="notification-badge"></span>
+             </div>
+             <a href="Settings.html"><i class="fa-solid fa-gear gear-icon"></i></a>
+            
+    <div class="dashboard-email glass ">
+            <p id="welcome-user">  <i style="color: #e2e8f0;" class="fa-solid fa-angle-down"></i></p>
+        
+        <div class="dropdown-menu" id="dropdown">
+          <p id="account-email"></p>
+          <button id="signout-btn" onclick="signout()">Sign Out</button>
+          <button id="switch-account-btn" onmouseover="switchAccount()">Switch Account</button>
+        </div>
+     </div>
+   </div>
+        
+    </div>
+
+    <div class="main-content">
+
+        <div class="sidebar glass">
+
+            <div class="img">
+                <img class="logo" src="logo.png" alt="logo-img">
+                <h3 class="logo-heading Glowing-Velora-Color">Velora</h3>
+            </div>
+
+            <ul class="nav-links">
+                <li><i class="fa-solid fa-users"></i><a href="dashboard.html">Dashboard</a></li>
+                <li><i class="fa-solid fa-credit-card"></i><a href="Transaction.html">Transactions</a></li>
+                <li><i class="fa-solid fa-wallet"></i><a href="Budgets.html">Budgets</a></li>
+                <li><i class="fa-solid fa-chart-line"></i><a href="Analytics.html">Analytics</a></li>
+                <li><i class="fa-solid fa-bullseye"></i><a href="Goals.html">Goals</a></li>
+                <li><i class="fa-solid fa-gear"></i><a href="Settings.html">Settings</a></li>
+            </ul>
+
+            <button class="dark-mode-toggle" onclick="toggleTheme()">🌙 Light Mode</button>
+      </div>
+
+
+        <div class="content-area">
+
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h2>Total Balance</h2>
+                        <p id="total-balance" ></p>
+                        <span><i style="color: #10b981;  " class="fa-solid fa-arrow-up-long"></i><span style="color: #10b981;">12.5%</span> this month</span>
+                   </div>
+                    <div class="icon">
+                    <i style="font-size: 35px; color: rgb(101, 109, 202); " class="fa-regular fa-credit-card"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                    <h2>This month Income</h2>
+                    <p id="total-income"></p>
+                    </div>
+                    <div class="icon">
+                       <i style="font-size: 25px; color:rgb(48, 167, 48); " class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                    <h2>This month spent</h2>
+                    <p id="total-expense"></p>
+                    <span><i style="color:#f97316  " class="fa-solid fa-arrow-down-long"></i><span style="color: #f97316;">8.3%</span> vs last month</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                       <h2>Budget Left</h2>
+                       <p id="budget-left"></p>
+                    </div>
+                     <div class="icon">
+                         <i style="font-size: 25px; color:rgb(102, 172, 36); " class="fa-solid fa-wallet"></i>
+                      </div>
+                </div>
+            </div>
+
+
+            <div class="btns-container">
+                <button class="add-Expense"> - Add Expense</button>
+                <button class="btn add-Income" style="color: skyblue;">+ Add Income</button>
+                <button class="btn add-Transfer"><i class="fa-solid fa-money-bill-transfer"></i>Transfer</button>
+                <button class="btn add-goal-btn"><i class="fa-solid fa-bullseye" style="color:rgb(178, 45, 178);"></i>New Goal</button>
+            </div>
+
+
+            <div class="graph-container">
+                <div class="Transaction-box graph-box">
+                    <h2 class="Glowing-Velora-Color" style="font-size: 20px; text-transform: uppercase;">Recent Transactions</h2>
+                   <div id="Recent-transactions-list"></div>
+
+                </div>
+                <div class="Expenses-box graph-box">
+                    <h2 class="Glowing-Velora-Color" style="font-size: 20px; text-transform: uppercase;">Expenses Breakdown <span >(This Month)</span></h2>
+                     
+                    <div class="expense-content">
+                            <div class="chart-box">
+                               <canvas id="expenseChart"></canvas>
+                            </div>
+                      <div class="expense-list"></div>
+                  </div>
+          </div>
+             
+                <div class="Financial-health-box graph-box">
+                    <h2 class="Glowing-Velora-Color" style="font-size: 20px; margin:0; text-transform: uppercase;">Financial Health</h2>
+                    <p style="color: white;" id="health-text"></p>
+                     <div class="health-content">
+                             <!-- circle rating-->
+                         <div class="health-score">
+                                <div class="circle">
+                                   <span>66</span>
+                                 </div>
+                                    <p>Score</p>
+                         </div>
+
+                             <!-- line graph -->
+                         <div class="health-graph">
+                                <canvas id="healthChart"></canvas>
+                         </div>
+
+                 </div>
+                </div>
+                <div class="Insights graph-box">
+                    <h2 class="Glowing-Velora-Color" style="margin: 0;">Insights</h2>
+                     <div class="insight-content">
+                       
+                    </div>
+
+                </div>
+                
+                <div class="Saving-goals graph-box">
+                      <p style="color:var(--card-title)"><i   style="font-size: 30px;" class="fa-solid fa-laptop-code Glowing-Velora-Color"></i></p>
+                      <p></p>
+                    </div>
+                <div class="Yearly-graph graph-box">
+                    <div class="yearly-chart">
+                        <canvas id="yearlyChart"></canvas>
+                     </div>
+                </div>
+             </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+<!-- transaction maodal to add Expense/Income -->
+<div class="transaction-modal" id="transaction-modal">
+    <div class="modal-content">
+        <h2 class="modal-title Glowing-Velora-Color">Add transaction</h2>
+         <input type="text" id="description" placeholder="Description">
+        <input type="number" id="amount" placeholder="Enter amount">
+        <button class="save-btn" onclick="handleSave()">Save</button>
+    </div>
+</div>
+<div class="switch-modal" id="switch-modal">
+
+  <div class="Modal-Content">
+    <h3 style="color:white">Switch Account</h3>
+    <div id="account-list"></div>
+    <button onclick="addAccount()">+ Add Account</button>
+  </div>
+</div>
+</div>
+<!-- Notification Drpodown -->
+ <div class="notification-container glass">
+    
+ </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="Authentication.js"></script>
+<script src="setting.js"></script>
+<script src="transactions.js"></script>
+<script src="dashboard.js"></script>
+<script src="Charts.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Goals</title>
+</head>
+<body>
+    <div class="container">
+
+    <div class="nav">
+        <div class="heading-box">
+            <h2 class="main-heading Glowing-Velora-Color">Saving Goals </h2>
+            <p class="sub-heading">Take control of your Finances</p>
+        </div>
+
+  <div class="icons-sidebox">
+           <div class="bell-wrapper">
+               <i class="fa-solid fa-bell bell-icon"></i>
+               <span class="notification-badge"></span>
+             </div>
+             <a href="Settings.html"><i class="fa-solid fa-gear gear-icon"></i></a>
+            
+    <div class="dashboard-email glass ">
+            <p id="welcome-user">  <i style="color: #e2e8f0;" class="fa-solid fa-angle-down"></i></p>
+        
+        <div class="dropdown-menu" id="dropdown">
+          <p id="account-email"></p>
+          <button id="signout-btn" onclick="signout()">Sign Out</button>
+          <button id="switch-account-btn" onmouseover="switchAccount()">Switch Account</button>
+        </div>
+     </div>
+   </div>
+        
+    </div>
+
+    <div class="main-content">
+
+        <div class="sidebar glass">
+
+            <div class="img">
+                <img class="logo" src="logo.png" alt="logo-img">
+                <h3 class="logo-heading Glowing-Velora-Color">Velora</h3>
+            </div>
+
+            <ul class="nav-links">
+                <li><i class="fa-solid fa-users"></i><a href="dashboard.html">Dashboard</a></li>
+                <li><i class="fa-solid fa-credit-card"></i><a href="Transaction.html">Transactions</a></li>
+                <li><i class="fa-solid fa-wallet"></i><a href="Budgets.html">Budgets</a></li>
+                <li><i class="fa-solid fa-chart-line"></i><a href="Analytics.html">Analytics</a></li>
+                <li><i class="fa-solid fa-bullseye"></i><a href="#">Goals</a></li>
+               <li><i class="fa-solid fa-gear"></i><a href="Settings.html">Settings</a></li>
+            </ul>
+             <button class="dark-mode-toggle" onclick="toggleTheme()">🌙 Light Mode</button>
+        </div>
+       
+        <div class="Goals-container">
+            <button class=" glass" id="Goal-Btn"><span style="color: #818cf8;">+</span> Add new Goal</button>
+
+        </div>
+      
+      <div id="Goal-modal" class="glass">
+        <h2 id="Goal-modal-heading"></h2>
+        <input id="Goal-modal-input" type="number" placeholder="Enter amount">
+       <div class="Goal-modal-btns"> <button onclick="closeGoalModal()">Cancel</button><button onclick="addMoneyToGoal();">Add</button></div>
+      </div>
+    </div>
+
+    </div>
+
+<div class="transaction-modal" id="transaction-modal">
+    <div class="modal-content">
+        <h2 class="modal-title Glowing-Velora-Color">Add transaction</h2>
+         <input type="text" id="description" placeholder="Description">
+        <input type="number" id="amount" placeholder="Enter amount">
+        <button class="save-btn" onclick="handleSave()">Save</button>
+    </div>
+</div>
+<!-- Notification Drpodown -->
+ <div class="notification-container glass">
+    
+ </div>
+ <div class="switch-modal" id="switch-modal">
+
+  <div class="Modal-Content">
+    <h3 style="color:white">Switch Account</h3>
+    <div id="account-list"></div>
+    <button onclick="addAccount()">+ Add Account</button>
+  </div>
+</div>
+    <script src="Authentication.js"></script>
+     <script src="setting.js"></script>
+    <script src="transactions.js"></script>
+    <script src="dashboard.js"></script>
+  
+</body>
+</html>
+
