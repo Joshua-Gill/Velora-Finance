@@ -548,14 +548,15 @@ function loadAllTransactions() {
   container.innerHTML = "";
 
   transactions.forEach(function (t, index) {
-
+  
+    const formattedDate = new Date(t.date).toLocaleDateString();
     let row = document.createElement("div");
     row.classList.add("transaction-row");
 
     let typeClass = t.type === "income" ? "income" : "expense";
 
     row.innerHTML = `
-      <div>${t.date}</div>
+      <div>${formattedDate}</div>
       <div>${t.description}</div>
       <div class="${typeClass}">${t.type}</div>
       <div class="${typeClass}">${formatCurrency(t.amount)}</div>
@@ -666,120 +667,6 @@ if (balanceEl) {
       document.getElementById("BudgetName").value = "";
       document.getElementById("BudgetAmount").value = "";
     }
-
-//     function renderBudget(){
-//       let parent=document.querySelector(".Budget-container");
-//        if(!parent) return;
-//        parent.innerHTML = "";
-//         let budgets = JSON.parse(localStorage.getItem("budgets_" + userEmail)) || [];
-//        if (!Array.isArray(budgets)) {
-//         budgets = [];
-//         }
-//          budgets.forEach(b=>{ 
-//           let saved=calculateBudgetSpent(b.name);
-//         let percent=b.max>0 ?(saved/b.max)*100:0;
-//         let leftAmount=b.max-saved;
-//           if (percent >= 80 && percent < 100 && !b.warned80) {
-//          addNotification(`⚠️ Budget "${b.name}" reached ${percent.toFixed(0)}%`, "budget");
-//          b.warned80 = true;
-//          }
-
-//         if (percent >= 100 && !b.warned100) {
-//         addNotification(`🚨 Budget "${b.name}" exceeded!`);
-//         b.warned100 = true;
-//         }
-//         localStorage.setItem("budgets_" + userEmail, JSON.stringify(budgets));
-//       let container=document.createElement("div");
-//      container.classList.add("Budget-box","glass");
-    
-//      container.innerHTML=`
-//         <div class="Budget-head">
-//             <h2>${b.name}</h2>
-//              <button class="budget-delete-btn" title="Delete Budget">🗑️ Delete Budget </button>
-//         </div>
-  
-//         <div class="budget-card-inner">
-    
-//             <!-- LEFT SECTION -->
-//     <div class="budget-left">
-//       <div class="budget-icon">
-//         <span class="budget-icon-emoji">${b.icon || "💰"}</span>
-//       </div>
-//       <div class="budget-info">
-//         <div class="budget-bar-track">
-//           <div class="budget-bar-fill" style="width:${Math.min(percent,100)}%"></div>
-//         </div>
-//         <span class="budget-left-text">${leftAmount.toLocaleString()} PKR left &nbsp; ${percent.toFixed(0)}%</span>
-//       </div>
-//     </div>
-
-//     <!-- RIGHT SECTION -->
-//     <div class="budget-right">
-//       <span class="budget-Max-amount">${formatCurrency(saved)} / <strong>${formatCurrency(b.max)}</strong></span>
-//       <div class="circle-progress" data-percent="${Math.min(percent,100).toFixed(0)}">
-//         <span class="circle-text">${Math.min(percent,100).toFixed(0)}%</span>
-//       </div>
-//       <span class="budget-status"></span>
-//     </div>
-
-//   </div>
-
-    
-         
-        
-//      `
-//      // Color the bar based on percent
-// const barFill = container.querySelector(".budget-bar-fill");
-// const statusEl = container.querySelector(".budget-status");
-// const leftText = container.querySelector(".budget-left-text");
-// const circle = container.querySelector(".circle-progress");
-
-// let barColor, circleColor;
-
-// if (percent > 100) {
-//   barColor = "#ef4444";
-//   circleColor = "#ef4444, #f97316";
-//   statusEl.innerHTML = `⚠️ <span style="color:#ef4444">Over budget by ${Math.abs(leftAmount).toLocaleString()} PKR</span>`;
-//   leftText.style.color = "#ef4444";
-// } else if (percent >= 80) {
-//   barColor = "#f97316";
-//   circleColor = "#f97316, #ef4444";
-//   statusEl.innerHTML = `↑ <span style="color:#f97316">${leftAmount.toLocaleString()} PKR left</span>`;
-//   leftText.style.color = "#f97316";
-// } else {
-//   barColor = "#818cf8";
-//   circleColor = "#818cf8, #a78bfa";
-//   statusEl.innerHTML = `↑ <span style="color:#10b981">${leftAmount.toLocaleString()} PKR left</span>`;
-//   leftText.style.color = "#10b981";
-// }
-
-// barFill.style.background = barColor;
-
-// const displayPercent = Math.min(percent, 100);
-// circle.style.background = `conic-gradient(${circleColor} ${displayPercent}%, #1e293b ${displayPercent}%)`;
-
-// // // Delete button
-// // const deleteBtn = container.querySelector(".budget-delete-btn");
-// // deleteBtn.addEventListener("click", () => {
-// //   let budgets = JSON.parse(localStorage.getItem("budgets_" + userEmail)) || [];
-// //   budgets = budgets.filter(item => item.name !== b.name);
-// //   localStorage.setItem("budgets_" + userEmail, JSON.stringify(budgets));
-// //   renderBudget();
-// // });
-      
-// //   parent.appendChild(container); 
-// //         });
-//     // ✅ Attach delete event directly using captured `b`
-//     container.querySelector(".budget-delete-btn").addEventListener("click", () => {
-//       let budgets = JSON.parse(localStorage.getItem("budgets_" + userEmail)) || [];
-//       budgets = budgets.filter(item => item.name !== b.name); // remove only THIS budget
-//       localStorage.setItem("budgets_" + userEmail, JSON.stringify(budgets));
-//       renderBudget(); // re-render
-//     });
-
-//     parent.appendChild(container);
-//   });
-// }
 
 function renderBudget() {
   let parent = document.querySelector(".Budget-container");

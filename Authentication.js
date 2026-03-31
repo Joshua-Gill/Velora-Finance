@@ -63,7 +63,7 @@ function login(){
   let currentUser = getCurrentUser();
 
    if(currentUser && currentUser.email){
-     window.location.href = "dashboard.html";
+     window.location.href = "index.html";
 };
 
 
@@ -78,7 +78,7 @@ function login(){
     localStorage.setItem("currentUser", JSON.stringify(user));
 
     alert("Login Successful!");
-    window.location.href = "dashboard.html";
+    window.location.href = "index.html";
 
   }else{
     alert("Invalid email or password");

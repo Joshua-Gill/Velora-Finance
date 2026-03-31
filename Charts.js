@@ -4,7 +4,7 @@ let monthlyChartInstance = null;
 // =============================
 // AUTH CHECK
 // =============================
-if (window.location.pathname.includes("dashboard.html")) {
+if (window.location.pathname.includes("index.html")) {
   checkAuth();
 }
 
