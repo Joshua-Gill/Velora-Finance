@@ -1311,6 +1311,7 @@ color: var(--text-main);
   margin:10px 0 8px;
 }
 .Budget-box {
+  position: relative;
   padding: 20px 24px;
   border-radius: 16px;
   margin-bottom: 16px;
