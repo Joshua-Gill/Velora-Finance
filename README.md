@@ -120,11 +120,11 @@ Mobile responsiveness is under improvement.
 
 ---
 
-<!-- ## 🌐 Live Demo
+## 🌐 Live Demo
 
-(Add your deployed link here after hosting)
+(https://velorafinanc.netlify.app/)
 
---- -->
+---
 
 ## 📁 Installation (Local Setup)
 

@@ -8,7 +8,8 @@ if (!settings) {
   };
   localStorage.setItem("notificationSettings", JSON.stringify(settings));
 }
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await initCurrency();
    let bellIcon = document.querySelector(".bell-icon");
   let notificationBox = document.querySelector(".notification-container");
 
@@ -76,10 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
        let saved = localStorage.getItem("currency") || "PKR";
         currencyDropdown.value = saved;
     
-
-      currencyDropdown.addEventListener("change", function(e) {
-          localStorage.setItem("currency", e.target.value);
-      });
+       currencyDropdown.addEventListener("change", function(e) {
+       localStorage.setItem("currency", e.target.value);
+       location.reload(); 
+});
     }
   } catch (err) {
     console.error("Currency error:", err);
@@ -164,11 +165,11 @@ function formatCurrency(amount) {
   let selectedCurrency = getSelectedCurrency();
   let rates = getRatesFromStorage();
 
-  console.log("Currency:", selectedCurrency);
-  console.log("Rates:", rates);
+  if (!rates || Object.keys(rates).length === 0) {
+    return amount.toFixed(2) + " PKR";
+  }
 
-  if (!rates || !rates[selectedCurrency]) {
-    console.log("⚠️ FALLBACK TO PKR");
+  if (!rates[selectedCurrency]) {
     return amount.toFixed(2) + " PKR";
   }
 
